@@ -1,4 +1,6 @@
 using BulkyBookWeb.Data;
+using BulkyBookWeb.Repository;
+using BulkyBookWeb.Repository.IRepository;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,7 +12,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlSer
     ));
 
 //builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
-
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
